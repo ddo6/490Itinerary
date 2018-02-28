@@ -15,11 +15,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <!-- Navigation Bar -->
 <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
   <a href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-map-marker w3-margin-right"></i>WeatherToEat</b></a>
-  <a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-  <a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  
 </div>
 
-<!-- Header -->
+<!-- Header
 <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
   <img src="/490Itinerary/PROJECT/img/outdoor1.jpg" alt="Outdoor" width="1500" height="700">
   <div class="w3-display-middle" style="width:65%">
@@ -28,7 +27,36 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
       <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Drinks');"><i class="fa fa-bed w3-margin-right"></i>Drinks</button>
       <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Take-Out');"><i class="fa fa-car w3-margin-right"></i>Take-Out</button>
     </div>
+ -->
+  <body>
 
+<h2>Login Form</h2>
+
+<form action="/action_page.php">
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+</body>
     <!-- Tabs -->
     <div id="Food" class="w3-container w3-white w3-padding-16 myLink">
       <h3>Find the ideal place to eat</h3>
