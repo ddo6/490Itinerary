@@ -4,5 +4,5 @@
 	$hostname = "sql2.njit.edu"; 			// or "sql2.njit.edu"   OR "SQL1.NJIT.EDU"
 	$username = "jet33";
 	$project  = "jet33";
-	$password = "nena1996";
+	$password = 
 ?>
