@@ -14,16 +14,10 @@
   $name = $_GET["user"];
   $pass = $_GET["pass"];
   
+  //Make sure user exists
+  user($name, $pass);
+  
   print "name '$name' pass '$pass' <br><br>"; 
-  
-  
-  //SQL Statements
-  $s1 = ""; //account table SQL
-  
-  sql ($type, $name, $s1);
-  
-  $result1 = get_A ($type, $s1); //account SQL statement result
-  echo $result1;
   
   print "<br><br>This interaction is completed";
 ?>
