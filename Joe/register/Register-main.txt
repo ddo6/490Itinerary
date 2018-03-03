@@ -1,0 +1,55 @@
+<?php
+
+  include ("A1-functions.php");
+  include("account.php");
+  
+  ($dbh = mysql_connect ($hostname, $username, $password)) or die ("Unable to connect to MySQL database");
+  		
+  mysql_selectdb($project);
+  
+  print "Results from A1.php with data from A1.html <br>";
+  print "Successfully connected to MySQL. <br><br>";
+  
+  //GETS INPUT
+  $name = $_GET["user"];
+  $pass = $_GET["pass"];
+  $amount = $_GET["amount"];
+  $type = $_GET["type"];
+  
+  print "name '$name' pass '$pass' amount '$amount' type '$type' <br><br>"; 
+  
+  //Protection
+  $type = get_case ($type, $name, $pass, $amount);
+  
+  //Admin function executed if type is A
+  if ($type == 'A') { admin ($name, $pass); };
+  
+  //User function executed if type is not A
+  if ($type != 'A') { user ( $type, $name, $pass, $amount);};
+  
+  //Updates if user
+  if ($type != 'A') { update ($name, $amount, $type); };
+  
+  //SQL Statements
+  $s1 = ""; //account table SQL
+  $s2 = ""; //transaction table SQL
+  
+  sql ($type, $name, $s1, $s2);
+  
+  $result1 = get_A ($type, $s1); //account SQL statement result
+  $result2 = get_T ($type, $s2); //transaction SQL statement results
+  echo $result1 . $result2;
+  
+  
+  //Mail function handled
+  if(isset($_GET['mailrequest']))
+  {
+    mymail ($type, $name, $result1 . $result2);
+  }
+  else
+  {
+    print "<br>No mail request. Service completed.";
+  }
+  
+  print "<br><br>This interaction is completed";
+?>

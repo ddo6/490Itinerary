@@ -19,5 +19,7 @@
 
   user($user);  
   
+  update($name, $user, $pass);
+  
   print "<br><br>This interaction is completed";
 ?>

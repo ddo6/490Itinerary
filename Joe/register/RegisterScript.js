@@ -7,7 +7,7 @@ function f()
     var ptrCon  = document.getElementById("conPass") 
    
     //checks to see if user or pass is empty
-    if(ptrName.value.trim() == "" || ptrUser.value.trim() == "") || ptrPass.value.trim() == "" || ptrCon.value.trim() == "")
+    if(ptrName.value.trim() == "" || ptrUser.value.trim() == "" || ptrPass.value.trim() == "" || ptrCon.value.trim() == "")
     {
       alert("Bad: Field is empty!")
       return false
