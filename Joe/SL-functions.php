@@ -4,8 +4,9 @@
   function user ($name, $pass)
   {
   	//check credentials and fetchs current balance if credentials are valid
-    $s = "select * from accounts where user = '$name' and pass = '$pass'";
-    ($t = mysql_query($s)) or die ( mysql_error());
+    $s = "select * from 490accounts where UserName = '$name' and Password = '$pass'";
+    
+    ($t = mysql_query($s)) or die (mysql_error());
      
     if(mysql_num_rows($t) == 0)
     {
