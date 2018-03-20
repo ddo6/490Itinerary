@@ -10,7 +10,9 @@
      
     if(mysql_num_rows($t) > 0)
     {
-      exit("Bad: Username taken");
+      print "Bad: Username taken";
+      header("refresh: 2; url=https://web.njit.edu/~jet33/register/SimpleRegister.html");
+      exit();
     }
    
   	return;
