@@ -7,17 +7,19 @@
   		
   mysql_selectdb($project);
   
-  print "Results from A1.php with data from A1.html <br>";
   print "Successfully connected to MySQL. <br><br>";
   
   //GETS INPUT
   $name = $_GET["user"];
   $pass = $_GET["pass"];
   
-  //Make sure user exists
   user($name, $pass);
   
   print "name '$name' pass '$pass' <br><br>"; 
   
   print "<br><br>This interaction is completed";
+  
+  //Redirect 
+  header("refresh: 2; url=https://web.njit.edu/~jet33/simple/home.html");
+  
 ?>
