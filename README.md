@@ -1,3 +1,3 @@
-#Project for IT490
+#Mock up of website working
 
-Link to Website - https://ddo6.github.io/490Itinerary/PROJECT/
+Link to Website - https://web.njit.edu/~jet33/simple/SimpleLogin.html
