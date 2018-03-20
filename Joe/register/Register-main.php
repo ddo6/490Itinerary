@@ -22,4 +22,6 @@
   update($name, $user, $pass);
   
   print "<br><br>This interaction is completed";
+  
+  header("refresh: 2; url=https://web.njit.edu/~jet33/simple/SimpleLogin.html");
 ?>
