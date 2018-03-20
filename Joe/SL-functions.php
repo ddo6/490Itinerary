@@ -10,7 +10,8 @@
      
     if(mysql_num_rows($t) == 0)
     {
-      exit("Bad: Invalid Credentials");
+      print "Bad: Invalid Credentials";
+      header("refresh : 2; url = https://web.njit.edu/~jet33/simple/SimpleLogin.html");
     }
   }
 ?>
