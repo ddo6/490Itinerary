@@ -24,19 +24,17 @@ echo "include statements";
   $con  = $_GET["conPass"];
 
   if (!auth($user,$pass)){
-    update($name,$user,$password);
+    update($name,$user,$pass);
     echo "<br>ranupdate statement";
-    redirect("Successfully created account please login","midterm/490Itinerary/Midterm/index.html");
+    redirect("Successfully created account please login","Midterm/index.html");
   }
   else{
     redirect("Username and password already exists please login or select new credentials","register.html");
   }
 
-  print "name '$name' user '$user' pass '$pass' <br><br>";
-
-  user($user);
-
-  update($name, $user, $pass);
-
+/*  update($name,$user,$pass);
+  echo "<br>update executed";
+  redirect("Successfully created account please login","Midterm/index.html");
+*/
   print "<br><br>This interaction is completed";
 ?>

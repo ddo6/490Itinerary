@@ -12,11 +12,11 @@
     global $dbh;
 
     $s = "select * from 490accounts where UserName = '$user' and Password = '$pass'";
-    echo "<br>$s<br>";
+  //  echo "<br>$s<br>";
     ($t = mysqli_query($dbh,$s)) or die (mysqli_error($dbh));
     $num = mysqli_num_rows($t);
-    echo "<br>Right after num rows";
-    
+  //  echo "<br>Right after num rows";
+
     if($num>0){
       return true;
 
@@ -29,17 +29,20 @@
   //update function will insert user into table
   function update ($name, $user, $password)
   {
+    global $dbh;
     //insert into accounts
-    $s = "insert into 490accounts values ('$name',  '$user', '$password')";
-
-    ($t = mysqli_query($s)) or die ( mysqli_error());
+    $s = "insert into 490accounts values ('$name','$user','$password')";
+  //  echo "<br>$s";
+    ($t = mysqli_query($dbh,$s)) or die ( mysqli_error($dbh));
+  //  echo "<br>executed query";
 
     return;
   }
 
     //redirect function to redirect user to corrrect pages
   function redirect($message,$url){
-    $delay=2;
+    $delay=4;
+    echo "$message";
     header("refresh:$delay; url=$url");
     exit();
   }
