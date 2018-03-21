@@ -1,18 +1,8 @@
 <?php
+
 session_start();
 echo session_id();
-echo "<br><br>";
-
-include ( "account.php" ) ;
-include ( "myfunctions.php" ) ;
-
-//Error Reporting
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-ini_set('display_errors' , 1);
-
-//CSS for message output
-
-($dbh = mysql_connect ($hostname, $username, $password)) or die ("Unable to connect to MySQL database");
+echo "um what";
 
 if (mysqli_connect_errno())
   {
@@ -21,8 +11,33 @@ if (mysqli_connect_errno())
 }
 
 
+//Error Reporting
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+ini_set('display_errors' , 1);
+
+include ( "accounts.php" ) ;
+include ( "functions.php" ) ;
+
+
+
+//Connect to DB
+
+($dbh = mysqli_connect ($hostname, $username, $password,$project)) or die ("Unable to connect to MySQL database");
+
+
+
+
 $user = $_GET["user"];
 $pass = $_GET["pass"];
+
+if (!auth($user,$pass))
+{
+  redirect("Incorrect Credentials entered, please try again or create an account","index.html");
+}
+else{
+  redirect("Successfully logged in","home.html");
+}
+
 
 
 echo "Username entered is $user<br>";
