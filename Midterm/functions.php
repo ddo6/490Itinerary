@@ -37,7 +37,8 @@
 
     //redirect function to redirect user to corrrect pages
   function redirect($message,$url){
-    $delay=2;
+    $delay=4;
+    echo "$message";
     header("refresh:$delay; url=$url");
     exit();
   }
