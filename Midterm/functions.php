@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php
 
   include ( "accounts.php" ) ;
@@ -16,10 +18,13 @@
     ($t = mysqli_query($dbh,$s)) or die (mysqli_error($dbh));
     $num = mysqli_num_rows($t);
 
-    if($num>0){
+    if($num>0)
+	{
+	  $_SESSION["logged"] = true;
       return true;
     }
-    else {
+    else 
+	{
       return false;
     }
   }
@@ -43,4 +48,12 @@
     exit();
   }
 
+  function gatekeeper()
+  {
+	if(!isset($_SESSION["logged"])  || !$_SESSION["logged"])
+	{
+		redirect ("Please login in correctly first.", "index.html");
+		return; 
+	}
+  }
 ?>
