@@ -12,9 +12,7 @@ if (mysqli_connect_errno())
 
 
 //Error Reporting
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-ini_set('display_errors' , 1);
-
+include ("error_log.php");
 include ( "accounts.php" ) ;
 include ( "functions.php" ) ;
 
