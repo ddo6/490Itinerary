@@ -29,10 +29,18 @@
         <div>
             <label>Zip Code</label>
             <input class="w3-input w3-border" type="number" id="zip" placeholder="Enter Zip Code">
+            <p>
+                <button class="w3-button w3-dark-grey" onclick="looc()">Get Places</button>
+            </p>
+
+
+            <label>Add store to itinerary</label>
+            <input class="w3-input w3-border" type="storename" id="StoreName" placeholder="Enter Store Name">
+            <input class="w3-input w3-border" type="storeaddress" id="StoreAddr" placeholder="Enter Store Address">
+            <input class="w3-input w3-border" type="storezipcode" id="StoreZip" placeholder="Enter Zip for Store">
+            <input type="button" value="SaveToFav" onclick="fav.php">
+
         </div>
-        <p>
-            <button class="w3-button w3-dark-grey" onclick="looc()">Get Places</button>
-        </p>
     <div class="w3-row-padding place-list" id="weatherstring">
     <div class="w3-row-padding place-list" id="list">
 
