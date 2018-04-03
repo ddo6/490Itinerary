@@ -1,3 +1,3 @@
-Version1.
+#Mock up of website strictly for remote testing purposes
 
-Updated homepage and added redirects to weather page and what to eat page.
+Link to Website - https://web.njit.edu/~jet33/simple/SimpleLogin.html
