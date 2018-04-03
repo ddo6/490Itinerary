@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    #map{
+        display: none;
+    }
+</style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm-fParnj0RrqJZqZUqR9cqxHgSHgH8r4&libraries=places"></script>
+
+</head>
+<body>
+
+
+<div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+        <div>
+            <label>Zip Code</label>
+            <input class="w3-input w3-border" type="number" id="zip" placeholder="Enter Zip Code">
+        </div>
+        <p>
+            <button class="w3-button w3-dark-grey" onclick="looc()">Get Places</button>
+        </p>
+    <div class="w3-row-padding place-list" id="list">
+
+    </div>
+    </div>
+    <div class="w3-half w3-margin-bottom">
+        <div id="map" style="width:100%;height:400px;"></div>
+    </div>
+</div>
+    <script>
+
+        var map;
+        var infowindow;
+        function getLocation(zipcode) {
+
+            var xhr = new XMLHttpRequest();
+            xhr.timeout = 2000;
+            xhr.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?address=' + zipcode + '&key=AIzaSyDm-fParnj0RrqJZqZUqR9cqxHgSHgH8r4', /*async*/ true);
+            //  xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    initMap(data.results[0].geometry.location);
+
+                }
+
+            };
+            xhr.send();
+
+        }
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        function initMap(coord) {
+
+           // var pyrmont = coord;
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: coord,
+                zoom: 15
+            });
+
+            infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+                location: coord,
+                radius: 500,
+                type: ['restaurant']
+            }, callback);
+        }
+
+
+        function callback(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                //console.log(results);
+                document.getElementById('list').innerHTML = '';
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                    //console.log(results[i].name, results[i].vicinity);
+                    addlist(results[i].name, results[i].vicinity);
+
+                }
+            }
+        }
+        function addlist(res, vic) {
+            document.getElementById('list').innerHTML += "<div class='w3-half w3-margin-bottom'><div class='w3-container w3-white'><h3>"+res+"</h3>" + "<p class='w3-opacity'>"+vic+"</p></div></div>"
+        }
+
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+    </script>
+<script>
+    function looc() {
+        var zipcode = document.getElementById('zip').value;
+        getLocation(zipcode);
+    }
+    var enter = document.getElementById('zip');
+    enter.onkeyup = function (e) {
+        if (e.keyCode == 13) {
+            looc();
+        }
+    };
+</script>
+</body>
+</html>
