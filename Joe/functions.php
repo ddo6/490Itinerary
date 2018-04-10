@@ -65,20 +65,28 @@
   	if(!isset($_SESSION["logged"])  || !$_SESSION["logged"])
   	{
   		redirect ("Please login in correctly first.", "index.html");
-  		return;mysql_query();
+  		return;
   	}
   }
 
   //Function to log information into database
   function central_log($type, $string, $file, $line)
   {
+      global $dbh;
+
+      echo "there is an error";
       //cleanse sql
       $type   = (int)$type;
       $string = mysqli_real_escape_string($dbh, $string);
       $file   = mysqli_real_escape_string($dbh, $file);
       $line   = (int)$line;
 
-      $sql = "INSERT INTO centralLog (log_type, log_time, log_string, log_file, log_line) VALUES ($type, UNIX_TIMESTAMP(), '$string', '$file', $line)";
+      echo $type;
+      echo $string;
+      echo $file;
+      echo $line;
+
+      $sql = "insert into centralLog (log_type, log_time, log_string, log_file, log_line) values ($type, UNIX_TIMESTAMP(), '$string', '$file', $line)";
       mysqli_query($dbh, $sql);
 
   }
