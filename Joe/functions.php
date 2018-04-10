@@ -81,11 +81,6 @@
       $file   = mysqli_real_escape_string($dbh, $file);
       $line   = (int)$line;
 
-      echo $type;
-      echo $string;
-      echo $file;
-      echo $line;
-
       $sql = "insert into centralLog (log_type, log_time, log_string, log_file, log_line) values ($type, UNIX_TIMESTAMP(), '$string', '$file', $line)";
       mysqli_query($dbh, $sql);
 
