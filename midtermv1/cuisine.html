@@ -19,7 +19,6 @@
     }
 </style>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm-fParnj0RrqJZqZUqR9cqxHgSHgH8r4&libraries=places"></script>
-
 </head>
 <body>
 
@@ -33,12 +32,16 @@
                 <button class="w3-button w3-dark-grey" onclick="looc()">Get Places</button>
             </p>
 
+            <form action = "itinerary.php">
+              <label>Add store to itinerary</label>
+              <input class="w3-input w3-border" type= text name="name"      id ="name"      placeholder="Enter Store Name">
+              <input class="w3-input w3-border" type= text name="address"   id ="address"   placeholder="Enter Store Address">
+              <button type = "submit"> Save to favorites!</button>
+            </form>
 
-            <label>Add store to itinerary</label>
-            <input class="w3-input w3-border" type="storename" id="StoreName" placeholder="Enter Store Name">
-            <input class="w3-input w3-border" type="storeaddress" id="StoreAddr" placeholder="Enter Store Address">
-            <input class="w3-input w3-border" type="storezipcode" id="StoreZip" placeholder="Enter Zip for Store">
-            <input type="button" value="SaveToFav" onclick="fav.php">
+
+
+
 
         </div>
     <div class="w3-row-padding place-list" id="weatherstring">
