@@ -1,8 +1,6 @@
 <?php
 
 session_start();
-echo session_id();
-echo "um what";
 
 if (mysqli_connect_errno())
   {
@@ -11,24 +9,23 @@ if (mysqli_connect_errno())
 }
 
 
-//Error Reporting
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-ini_set('display_errors' , 1);
-
 include ( "accounts.php" ) ;
 include ( "functions.php" ) ;
 
-
+//Error Reporting
+include ("error_log.php");
 
 //Connect to DB
 
 ($dbh = mysqli_connect ($hostname, $username, $password,$project)) or die ("Unable to connect to MySQL database");
 
-
-
+//Error Reporting
+include ("error_log.php");
 
 $user = $_GET["user"];
 $pass = $_GET["pass"];
+
+$_SESSION["sessUser"] = $user;
 
 if (!auth($user,$pass))
 {
@@ -38,32 +35,4 @@ else{
   redirect("Successfully logged in","homepage.html");
 }
 
-
-
-echo "Username entered is $user<br>";
-echo "Password is $pass<br>";
-
-echo "<br>Checking User Credentials<br>";
-
-/*if (! auth($user,$pass))
-  {
-    redirect ("Incorrect credentials entered, redirecting to login page.", "login.html", $delay);
-  }
-  else {
-
-    global $db;
-    $s = "select * from accounts where user = '$user' and pass = '$pass'";
-    $t = mysqli_query($db,$s) or die(mysqli_error());
-    $r = mysqli_fetch_array($t,MYSQLI_ASSOC);
-
-
-
-
-
-    redirect ("Correct Credentials entered, redirecting to application.","formpage.php",$delay);
-  }
- echo "<br>redirect function working";
-*/
-
-
- ?>
+?>
