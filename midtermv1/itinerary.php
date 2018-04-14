@@ -36,7 +36,9 @@
     $name    = mysqli_real_escape_string($dbh, $name);
     $address = mysqli_real_escape_string($dbh, $address);
 
-    $sql = "insert into itinerary (store_name, store_address, user_name) values ('$name', '$address', 'joe')";
+    $user = $_SESSION["sessUser"];
+
+    $sql = "insert into itinerary (store_name, store_address, user_name) values ('$name', '$address', '$user')";
     mysqli_query($dbh, $sql);
 
     redirect("Store added to favorites. Redirecting back to previous page","cuisine.html");
