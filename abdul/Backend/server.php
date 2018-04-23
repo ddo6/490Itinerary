@@ -150,7 +150,7 @@ function doRegister($username, $password, $name) {
 		file_put_contents("log.txt", $log.PHP_EOL, FILE_APPEND | LOCK_EX);
 
 		return $response;
-
+		}
 	}
 }
 
